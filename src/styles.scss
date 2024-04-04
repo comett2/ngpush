@@ -2,3 +2,20 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nodes-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.animate__animated {
+  animation: mymove 0.5s;
+  animation-iteration-count: 1;
+}
+
+@keyframes mymove {
+  from {background-color: white;}
+  to {background-color: red;}
+}

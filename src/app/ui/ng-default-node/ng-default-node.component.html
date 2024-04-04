@@ -1,6 +1,7 @@
 <div>
-    OnPush Node
+    Default Node
     <button (click)="clicked()" mat-raised-button color="accent">Click</button>
+
 </div>
 <div class="nodes-container">
     @for (node of node?.children; track node.id) {
@@ -13,3 +14,4 @@
         }
     }
 </div>
+

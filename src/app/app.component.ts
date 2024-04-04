@@ -6,7 +6,7 @@ import { NgDetectNode } from "./api/ng-detect-node";
 import { NgPushTreeServiceService } from "./api/ng-push-tree-service.service";
 import { MatTree, MatTreeNode } from "@angular/material/tree";
 import { NgPushNodeComponent } from "./ui/ng-push-node/ng-push-node.component";
-import { NgDefaultNodeComponent } from "./ui/ng-default-node/ng-default-node/ng-default-node.component";
+import { NgDefaultNodeComponent } from "./ui/ng-default-node/ng-default-node.component";
 
 @Component({
 	selector: 'app-root',
