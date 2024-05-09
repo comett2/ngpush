@@ -1,21 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.parent-node-container {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 18px;
+  position: relative;
+  border-radius: 4px;
+}
 
 .nodes-container {
-  position: absolute;
+  //position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.plus-default-node {
+  position: absolute;
+  visibility: hidden;
+  right: -10px;
+  bottom: -24px;
+}
+
+.plus-push-node {
+  position: absolute;
+  visibility: hidden;
+  right: -25px;
+  bottom: 16px;
+}
+
+.remove-node {
+  position: absolute;
+  visibility: hidden;
+  left: -25px;
+}
+
+.nodes-container:hover .node-button {
+  visibility: visible;
+}
+
+.nodes-container > * {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .animate__animated {
-  animation: mymove 0.5s;
+  animation: background_change 1s;
   animation-iteration-count: 1;
 }
 
-@keyframes mymove {
-  from {background-color: white;}
-  to {background-color: red;}
+@keyframes background_change {
+  0% {
+    background-color: white;
+  }
+  50% {
+    background-color: #669e0973;
+  }
+  0% {
+    background-color: white;
+  }
 }
+
+

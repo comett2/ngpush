@@ -1,14 +1,27 @@
-import { ChangeDetectionStrategy, Component, DoCheck, ElementRef, forwardRef, Input, Renderer2 } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DoCheck,
+  ElementRef,
+  forwardRef,
+  Input,
+  Renderer2,
+  ViewChild
+} from '@angular/core';
 import { NgDetectNode } from "../../api/ng-detect-node";
 import { NgPushNodeComponent } from "../ng-push-node/ng-push-node.component";
-import { MatButton } from "@angular/material/button";
+import { MatButton, MatMiniFabButton } from "@angular/material/button";
+import { StaticVariables } from "../StaticVariables";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
   selector: 'app-ng-default-node',
   standalone: true,
   imports: [
     forwardRef(() => NgPushNodeComponent),
-    MatButton
+    MatButton,
+    MatMiniFabButton,
+    MatIcon
   ],
   templateUrl: './ng-default-node.component.html',
   styleUrl: './ng-default-node.component.scss',
@@ -16,6 +29,7 @@ import { MatButton } from "@angular/material/button";
 })
 export class NgDefaultNodeComponent implements DoCheck {
 
+  @ViewChild('parent_node') parent_node: ElementRef | null = null;
   @Input() node: NgDetectNode | null = null;
 
   onPushStrategy = ChangeDetectionStrategy.OnPush;
@@ -33,10 +47,13 @@ export class NgDefaultNodeComponent implements DoCheck {
   }
 
   animate(): void {
-    this.renderer.addClass(this.elementRef.nativeElement, 'animate__animated');
+    if (this.parent_node === null) {
+      return;
+    }
+    this.renderer.addClass(this.parent_node?.nativeElement, 'animate__animated');
     setTimeout(() => {
-        this.renderer.removeClass(this.elementRef.nativeElement, 'animate__animated');
-    }, 500);
+        this.renderer.removeClass(this.parent_node?.nativeElement, 'animate__animated');
+    }, StaticVariables.ANIMATION_DURATION);
   }
 
   clicked() {

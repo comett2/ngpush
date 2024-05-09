@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, Input, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, Input, Renderer2, ViewChild } from '@angular/core';
 import { NgDetectNode } from "../../api/ng-detect-node";
 import { NgDefaultNodeComponent } from "../ng-default-node/ng-default-node.component";
-import { MatButton } from "@angular/material/button";
+import { MatButton, MatMiniFabButton } from "@angular/material/button";
+import { StaticVariables } from "../StaticVariables";
+import { MatIcon } from "@angular/material/icon";
 
 @Component({
 	selector: 'app-ng-push-node',
@@ -9,7 +11,9 @@ import { MatButton } from "@angular/material/button";
 	imports: [
 		forwardRef(() => NgDefaultNodeComponent),
 		NgDefaultNodeComponent,
-		MatButton
+		MatButton,
+		MatIcon,
+		MatMiniFabButton
 	],
 	templateUrl: './ng-push-node.component.html',
 	styleUrl: './ng-push-node.component.scss',
@@ -17,6 +21,7 @@ import { MatButton } from "@angular/material/button";
 })
 export class NgPushNodeComponent {
 
+	@ViewChild('parent_node') parent_node: ElementRef | null = null;
 	@Input() node: NgDetectNode | null = null;
 
 	onPushStrategy = ChangeDetectionStrategy.OnPush;
@@ -33,10 +38,13 @@ export class NgPushNodeComponent {
 	}
 
 	animate(): void {
-		this.renderer.addClass(this.elementRef.nativeElement, 'animate__animated');
+		if (this.parent_node === null) {
+			return;
+		}
+		this.renderer.addClass(this.parent_node?.nativeElement, 'animate__animated');
 		setTimeout(() => {
-			this.renderer.removeClass(this.elementRef.nativeElement, 'animate__animated');
-		}, 1000);
+			this.renderer.removeClass(this.parent_node?.nativeElement, 'animate__animated');
+		}, StaticVariables.ANIMATION_DURATION);
 	}
 
 	clicked() {
