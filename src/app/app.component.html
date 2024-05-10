@@ -1,9 +1,0 @@
-<div class="root-container">
-    @if (node?.strategy === onPushStrategy) {
-        <app-ng-push-node [node]="node">
-        </app-ng-push-node>
-    } @else if (node?.strategy === defaultStrategy) {
-        <app-ng-default-node [node]="node">
-        </app-ng-default-node>
-    }
-</div>
