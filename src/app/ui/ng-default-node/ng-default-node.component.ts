@@ -13,6 +13,7 @@ import { NgPushNodeComponent } from "../ng-push-node/ng-push-node.component";
 import { MatButton, MatMiniFabButton } from "@angular/material/button";
 import { StaticVariables } from "../StaticVariables";
 import { MatIcon } from "@angular/material/icon";
+import { NgPushTreeService } from "../../api/ng-push-tree.service";
 
 @Component({
   selector: 'app-ng-default-node',
@@ -37,7 +38,8 @@ export class NgDefaultNodeComponent implements DoCheck {
 
   constructor(
       private renderer: Renderer2,
-      private elementRef: ElementRef
+      private elementRef: ElementRef,
+      private readonly ngPushTreeService: NgPushTreeService
   ) {
 
   }
@@ -58,5 +60,23 @@ export class NgDefaultNodeComponent implements DoCheck {
 
   clicked() {
 
+  }
+
+  addDefaultChild() {
+    if (this.node !== null) {
+      this.ngPushTreeService.addNode(this.node.id, ChangeDetectionStrategy.Default);
+    }
+  }
+
+  addOnPushChild() {
+    if (this.node !== null) {
+      this.ngPushTreeService.addNode(this.node.id, ChangeDetectionStrategy.OnPush);
+    }
+  }
+
+  removeNode() {
+    if (this.node !== null) {
+      this.ngPushTreeService.removeNode(this.node);
+    }
   }
 }

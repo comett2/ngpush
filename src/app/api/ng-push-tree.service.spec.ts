@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NgPushTreeServiceService } from './ng-push-tree-service.service';
+import { NgPushTreeService } from './ng-push-tree.service';
 
 describe('NgPushTreeServiceService', () => {
-  let service: NgPushTreeServiceService;
+  let service: NgPushTreeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NgPushTreeServiceService);
+    service = TestBed.inject(NgPushTreeService);
   });
 
   it('should be created', () => {

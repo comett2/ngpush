@@ -10,13 +10,13 @@ body {
 }
 
 .parent-node-container {
-  padding: 16px;
+  padding: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 18px;
   position: relative;
-  border-radius: 4px;
+  border-radius: 1px;
 }
 
 .nodes-container {
@@ -47,7 +47,7 @@ body {
   left: -25px;
 }
 
-.nodes-container:hover .node-button {
+.parent-node-container:hover .node-button {
   visibility: visible;
 }
 
@@ -64,14 +64,8 @@ body {
 }
 
 @keyframes background_change {
-  0% {
-    background-color: white;
-  }
   50% {
-    background-color: #669e0973;
-  }
-  0% {
-    background-color: white;
+    background-color: red;
   }
 }
 

@@ -2,17 +2,17 @@
      class="parent-node-container">
     <button #button (click)="clicked()" mat-raised-button color="primary">Click</button>
     <div class="plus-default-node node-button">
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
-            <mat-icon>plus_one</mat-icon>D
+        <button (click)="addDefaultChild()" mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+            <mat-icon>multiple_stop</mat-icon>
         </button>
     </div>
     <div class="plus-push-node node-button">
-        <button mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
-            <mat-icon>plus_one</mat-icon>P
+        <button (click)="addOnPushChild()" mat-mini-fab color="primary" aria-label="Example icon button with a plus one icon">
+            <mat-icon>back_hand</mat-icon>
         </button>
     </div>
     <div class="remove-node node-button">
-        <button mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
+        <button (click)="removeNode() "mat-mini-fab color="accent" aria-label="Example icon button with a delete icon">
             <mat-icon>delete</mat-icon>
         </button>
     </div>

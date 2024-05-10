@@ -4,8 +4,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: stretch;
+  justify-content: flex-start;
 }
 
 .parent-node-container {
-  background-color: lightblue
+background-color: sandybrown
 }
+
+
